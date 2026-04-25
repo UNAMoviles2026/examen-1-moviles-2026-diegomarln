@@ -40,7 +40,10 @@ fun SpaceCard(
             modifier = Modifier.padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            SpaceImage(contentDescription = space.imageDescription)
+            SpaceImage(
+                imageRes = space.imageRes,
+                contentDescription = space.imageDescription
+            )
 
             Row(
                 modifier = Modifier.fillMaxWidth(),

@@ -91,6 +91,7 @@ fun SpaceDetailScreen(
         ) {
             item {
                 SpaceImage(
+                    imageRes = space.imageRes,
                     contentDescription = space.imageDescription,
                     modifier = Modifier.fillMaxWidth()
                 )
