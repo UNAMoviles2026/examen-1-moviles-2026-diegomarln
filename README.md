@@ -13,7 +13,7 @@ La implementación se realizó con Android nativo, Kotlin y Jetpack Compose, uti
 - Listado de espacios de coworking disponibles.
 - Visualización de información básica por espacio:
   - Nombre.
-  - Imagen simulada.
+  - Imagen local del espacio de coworking.
   - Descripción.
   - Ubicación.
   - Capacidad.

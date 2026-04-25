@@ -15,7 +15,7 @@ La aplicación contiene dos pantallas principales:
 
 2. **Pantalla de detalle del espacio**
     - Muestra información ampliada del espacio seleccionado.
-    - Presenta imagen simulada, nombre, descripción, ubicación, capacidad, precio por hora, disponibilidad y amenidades.
+    - Presenta imagen local del espacio, nombre, descripción, ubicación, capacidad, precio por hora, disponibilidad y amenidades.
     - Incluye un botón para simular la creación de una reservación.
     - Incluye navegación de regreso al listado.
     - Mantiene visible la barra de navegación inferior.
@@ -44,7 +44,7 @@ Representa la pantalla de detalle de un espacio seleccionado.
 Responsabilidades:
 
 - Mostrar la información ampliada del espacio.
-- Mostrar la imagen simulada del espacio.
+- Mostrar la imagen local del espacio.
 - Mostrar ubicación, capacidad, precio, disponibilidad y amenidades.
 - Permitir volver al listado mediante un botón de regreso.
 - Simular una reservación mediante el botón `Reservar espacio`.
@@ -69,7 +69,7 @@ Componente reutilizable para representar un espacio de coworking dentro del list
 
 Muestra:
 
-- Imagen simulada.
+- Imagen local del espacio de coworking.
 - Nombre del espacio.
 - Descripción.
 - Ubicación.
@@ -83,7 +83,7 @@ Este componente recibe un objeto `CoworkingSpace` y una acción `onClick`, por l
 
 Componente reutilizable para representar visualmente la imagen del espacio.
 
-Como la prueba de concepto no requiere imágenes reales, se utiliza una imagen simulada con un fondo y un ícono. Esto cumple el requisito visual sin depender de recursos externos o backend.
+Carga una imagen local real (`coworking_space.jpg`) almacenada en `drawable-nodpi`, usando `painterResource`. La misma imagen se reutiliza en todas las tarjetas y en la pantalla de detalle, sin depender de internet ni de un backend.
 
 ### `SpaceInfoRow`
 
@@ -146,7 +146,7 @@ La interfaz se organizó separando responsabilidades entre `screens`, `component
 
 La carpeta `screens` contiene pantallas completas, como el listado y el detalle. Estas pantallas se encargan de componer la interfaz general y coordinar las acciones del usuario.
 
-La carpeta `components` contiene elementos reutilizables, como tarjetas, filas de información, badges de disponibilidad e imagen simulada. Esta separación permite que los componentes puedan usarse en varias pantallas sin duplicar código.
+La carpeta `components` contiene elementos reutilizables, como tarjetas, filas de información, badges de disponibilidad e imagen local reutilizable. Esta separación permite que los componentes puedan usarse en varias pantallas sin duplicar código.
 
 La carpeta `data` contiene el modelo `CoworkingSpace` y los datos simulados utilizados por la prueba de concepto. Esto mantiene los datos separados de la interfaz.
 
@@ -161,7 +161,7 @@ La implementación utiliza los componentes requeridos por la evaluación:
 - `LazyColumn` para el listado de espacios.
 - `Card` para representar cada espacio.
 - `Text` para mostrar información textual.
-- `Image` para representar la imagen simulada del espacio.
+- `Image` para mostrar la imagen local del espacio de coworking.
 - `Button` para simular la reservación.
 - `IconButton` para la acción de regreso.
 - `Scaffold` para estructurar las pantallas.
