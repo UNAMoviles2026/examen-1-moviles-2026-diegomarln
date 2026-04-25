@@ -47,7 +47,7 @@ Responsabilidades:
 - Mostrar la imagen simulada del espacio.
 - Mostrar ubicación, capacidad, precio, disponibilidad y amenidades.
 - Permitir volver al listado mediante un botón de regreso.
-- Simular una reservación mediante el botón `Reserve Space`.
+- Simular una reservación mediante el botón `Reservar espacio`.
 - Mostrar un `Snackbar` como retroalimentación visual.
 - Mantener visible la barra inferior de navegación.
 
@@ -57,11 +57,11 @@ Representa la barra de navegación inferior visible en las pantallas principales
 
 Incluye tres opciones visuales:
 
-- `Spaces`
-- `Bookings`
-- `Profile`
+- `Espacios`
+- `Reservas`
+- `Perfil`
 
-En esta prueba de concepto, la opción principal es `Spaces`, ya que el alcance se enfoca en explorar espacios y ver su detalle. Las demás opciones quedan como parte de la estructura visual base para una futura versión.
+En esta prueba de concepto, la opción principal es `Espacios`, ya que el alcance se enfoca en explorar espacios y ver su detalle. Las demás opciones quedan como parte de la estructura visual base para una futura versión.
 
 ### `SpaceCard`
 
@@ -105,8 +105,8 @@ Componente reutilizable para mostrar el estado de disponibilidad del espacio.
 
 Puede mostrar:
 
-- `Available`
-- `Unavailable`
+- `Disponible`
+- `No disponible`
 
 Este componente permite mantener consistencia visual en el listado y en la pantalla de detalle.
 
