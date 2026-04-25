@@ -14,7 +14,7 @@ fun SpaceAvailabilityBadge(
     isAvailable: Boolean,
     modifier: Modifier = Modifier
 ) {
-    val text = if (isAvailable) "Available" else "Unavailable"
+    val text = if (isAvailable) "Disponible" else "No disponible"
 
     Text(
         text = text,

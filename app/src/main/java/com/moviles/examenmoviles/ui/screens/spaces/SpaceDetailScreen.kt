@@ -53,7 +53,7 @@ fun SpaceDetailScreen(
             CenterAlignedTopAppBar(
                 title = {
                     Text(
-                        text = "Space Details",
+                        text = "Detalle del espacio",
                         style = MaterialTheme.typography.titleLarge
                     )
                 },
@@ -61,7 +61,7 @@ fun SpaceDetailScreen(
                     IconButton(onClick = onBackClick) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Outlined.ArrowBack,
-                            contentDescription = "Back"
+                            contentDescription = "Atrás"
                         )
                     }
                 },
@@ -133,17 +133,17 @@ fun SpaceDetailScreen(
 
                     SpaceInfoRow(
                         icon = Icons.Outlined.Groups,
-                        text = "Capacity: ${space.capacity} people"
+                        text = "Capacidad: ${space.capacity} personas"
                     )
 
                     SpaceInfoRow(
                         icon = Icons.Outlined.Payments,
-                        text = "$${space.pricePerHour} per hour"
+                        text = "$${space.pricePerHour} por hora"
                     )
 
                     SpaceInfoRow(
                         icon = Icons.Outlined.CheckCircle,
-                        text = if (space.isAvailable) "Available for booking" else "Currently unavailable"
+                        text = if (space.isAvailable) "Disponible para reservar" else "Actualmente no disponible"
                     )
                 }
             }
@@ -153,7 +153,7 @@ fun SpaceDetailScreen(
                     verticalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
                     Text(
-                        text = "Amenities",
+                        text = "Amenidades",
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.onBackground
                     )
@@ -172,14 +172,14 @@ fun SpaceDetailScreen(
                     onClick = {
                         coroutineScope.launch {
                             snackbarHostState.showSnackbar(
-                                message = "Reservation request created"
+                                message = "Solicitud de reservación creada"
                             )
                         }
                     },
                     enabled = space.isAvailable,
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    Text(text = "Reserve Space")
+                    Text(text = "Reservar espacio")
                 }
             }
         }

@@ -70,12 +70,12 @@ fun SpaceCard(
 
             SpaceInfoRow(
                 icon = Icons.Outlined.Groups,
-                text = "Capacity: ${space.capacity} people"
+                text = "Capacidad: ${space.capacity} personas"
             )
 
             SpaceInfoRow(
                 icon = Icons.Outlined.Payments,
-                text = "$${space.pricePerHour} per hour"
+                text = "$${space.pricePerHour} por hora"
             )
         }
     }

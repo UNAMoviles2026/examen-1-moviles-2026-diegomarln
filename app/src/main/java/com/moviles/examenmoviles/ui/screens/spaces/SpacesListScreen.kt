@@ -42,7 +42,7 @@ fun SpacesListScreen(
             CenterAlignedTopAppBar(
                 title = {
                     Text(
-                        text = "Coworking Spaces",
+                        text = "Espacios de coworking",
                         style = MaterialTheme.typography.titleLarge
                     )
                 },
@@ -69,7 +69,7 @@ fun SpacesListScreen(
                 .padding(innerPadding)
         ) {
             Text(
-                text = "Find available spaces to work, meet, or collaborate.",
+                text = "Encuentra espacios disponibles para trabajar, reunirte o colaborar.",
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 18.dp, vertical = 12.dp),
@@ -112,10 +112,10 @@ fun SpacesBottomBar(
             icon = {
                 Icon(
                     imageVector = Icons.Outlined.Home,
-                    contentDescription = "Spaces"
+                    contentDescription = "Espacios"
                 )
             },
-            label = { Text(text = "Spaces") }
+            label = { Text(text = "Espacios") }
         )
 
         NavigationBarItem(
@@ -124,10 +124,10 @@ fun SpacesBottomBar(
             icon = {
                 Icon(
                     imageVector = Icons.Outlined.CalendarMonth,
-                    contentDescription = "Reservations"
+                    contentDescription = "Reservas"
                 )
             },
-            label = { Text(text = "Bookings") }
+            label = { Text(text = "Reservas") }
         )
 
         NavigationBarItem(
@@ -136,10 +136,10 @@ fun SpacesBottomBar(
             icon = {
                 Icon(
                     imageVector = Icons.Outlined.Person,
-                    contentDescription = "Profile"
+                    contentDescription = "Perfil"
                 )
             },
-            label = { Text(text = "Profile") }
+            label = { Text(text = "Perfil") }
         )
     }
 }
