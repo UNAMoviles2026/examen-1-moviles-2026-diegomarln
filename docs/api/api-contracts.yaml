@@ -1,0 +1,254 @@
+openapi: 3.0.3
+
+info:
+  title: Coworking Spaces API
+  version: 1.0.0
+  description: >
+    Contratos de API propuestos para el sistema de gestión de espacios de coworking.
+        Estos contratos definen la comunicación esperada entre la aplicación móvil y el
+        backend para operaciones relacionadas con reservaciones de espacios. La prueba
+        de concepto móvil utiliza datos simulados, pero los contratos representan el
+        diseño técnico previsto para una implementación completa del sistema.
+
+servers:
+  - url: https://api.coworking.example.com/api
+    description: Servidor conceptual de producción
+
+paths:
+  /reservations:
+    post:
+      summary: Crear una reservación de espacio
+      description: >
+        Permite crear una reservación para un espacio de coworking disponible.
+        El backend debe validar que el espacio exista, que esté disponible y
+        que el horario solicitado sea válido.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - spaceId
+                - userId
+                - reservationDate
+                - startTime
+                - endTime
+                - numberOfPeople
+              properties:
+                spaceId:
+                  type: string
+                  example: "space-001"
+                userId:
+                  type: string
+                  example: "user-001"
+                reservationDate:
+                  type: string
+                  format: date
+                  example: "2026-04-25"
+                startTime:
+                  type: string
+                  example: "09:00"
+                endTime:
+                  type: string
+                  example: "12:00"
+                numberOfPeople:
+                  type: integer
+                  example: 4
+                notes:
+                  type: string
+                  nullable: true
+                  example: "Se requiere espacio cerca de una toma eléctrica."
+      responses:
+        "201":
+          description: Reservación creada correctamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reservationId:
+                    type: string
+                    example: "reservation-001"
+                  spaceId:
+                    type: string
+                    example: "space-001"
+                  userId:
+                    type: string
+                    example: "user-001"
+                  reservationDate:
+                    type: string
+                    format: date
+                    example: "2026-04-25"
+                  startTime:
+                    type: string
+                    example: "09:00"
+                  endTime:
+                    type: string
+                    example: "12:00"
+                  numberOfPeople:
+                    type: integer
+                    example: 4
+                  totalPrice:
+                    type: number
+                    format: double
+                    example: 45.00
+                  status:
+                    type: string
+                    example: "confirmed"
+                  message:
+                    type: string
+                    example: "La reservación fue creada correctamente."
+        "400":
+          description: Datos inválidos en la solicitud
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Los datos enviados no son válidos."
+        "404":
+          description: Espacio no encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "El espacio solicitado no existe."
+        "409":
+          description: Espacio no disponible para el horario solicitado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "El espacio no está disponible en el horario seleccionado."
+
+  /reservations/{reservationId}:
+    put:
+      summary: Actualizar una reservación existente
+      description: >
+        Permite actualizar información de una reservación existente, como la
+        fecha, hora, cantidad de personas o estado. El backend debe validar
+        que la reservación exista y que los nuevos datos sean válidos.
+      parameters:
+        - name: reservationId
+          in: path
+          required: true
+          description: Identificador único de la reservación
+          schema:
+            type: string
+            example: "reservation-001"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - reservationDate
+                - startTime
+                - endTime
+                - numberOfPeople
+                - status
+              properties:
+                reservationDate:
+                  type: string
+                  format: date
+                  example: "2026-04-26"
+                startTime:
+                  type: string
+                  example: "10:00"
+                endTime:
+                  type: string
+                  example: "13:00"
+                numberOfPeople:
+                  type: integer
+                  example: 5
+                status:
+                  type: string
+                  enum:
+                    - confirmed
+                    - cancelled
+                    - pending
+                  example: "confirmed"
+                notes:
+                  type: string
+                  nullable: true
+                  example: "Cambio de horario solicitado por el usuario."
+      responses:
+        "200":
+          description: Reservación actualizada correctamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reservationId:
+                    type: string
+                    example: "reservation-001"
+                  spaceId:
+                    type: string
+                    example: "space-001"
+                  userId:
+                    type: string
+                    example: "user-001"
+                  reservationDate:
+                    type: string
+                    format: date
+                    example: "2026-04-26"
+                  startTime:
+                    type: string
+                    example: "10:00"
+                  endTime:
+                    type: string
+                    example: "13:00"
+                  numberOfPeople:
+                    type: integer
+                    example: 5
+                  totalPrice:
+                    type: number
+                    format: double
+                    example: 45.00
+                  status:
+                    type: string
+                    example: "confirmed"
+                  message:
+                    type: string
+                    example: "La reservación fue actualizada correctamente."
+        "400":
+          description: Datos inválidos en la solicitud
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Los datos enviados no son válidos."
+        "404":
+          description: Reservación no encontrada
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "La reservación solicitada no existe."
+        "409":
+          description: Conflicto con la disponibilidad del espacio
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "El nuevo horario solicitado no está disponible."
